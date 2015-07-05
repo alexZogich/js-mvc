@@ -6,7 +6,7 @@ var Controller = function (options) {
 	this.opts = options;
 	this.render();
 	this.addEvents();
-	//this.checkModel(); //Запускати тільки в крайніх випадках (дуже підвисає)
+	this.checkModel();
 
 }
 
@@ -15,6 +15,10 @@ Controller.prototype.addEvents = function () {
 		document.getElementById(item.substring(1))
 				.addEventListener("click",this.opts[this.opts.clickHandlers[item]].bind(this.opts));
 	}
+}
+
+Controller.prototype["func"] = function () {
+	console.log(229);
 }
 
 Controller.prototype.render = function () {
@@ -26,11 +30,14 @@ Controller.prototype.checkModel = function () {
 
 	if(this.opts.model.changed === true) {
 			document.getElementById(this.opts.elementId)
-							 		 .innerHTML = this.opts.render();
+					.innerHTML = this.opts.render();
 			this.render();
+			this.addEvents();
 			this.opts.model.changed = false;
+			
 		}
-	setInterval(this.checkModel.bind(this), 100);
+	console.log(1);
+	setTimeout(this.checkModel.bind(this), 100);
 }
 
 ////////////////////////////////////////////////////////////
