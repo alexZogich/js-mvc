@@ -17,10 +17,6 @@ Controller.prototype.addEvents = function () {
 	}
 }
 
-Controller.prototype["func"] = function () {
-	console.log(229);
-}
-
 Controller.prototype.render = function () {
 	document.getElementById(this.opts.elementId)
 			.innerHTML = this.opts.render();
@@ -36,7 +32,6 @@ Controller.prototype.checkModel = function () {
 			this.opts.model.changed = false;
 			
 		}
-	console.log(1);
 	setTimeout(this.checkModel.bind(this), 100);
 }
 
